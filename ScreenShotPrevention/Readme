@@ -1,0 +1,43 @@
+//
+//  Readme
+//  ScreenShotPrevention
+//
+//  Created by Sainath Tuptewar on 07/05/26.
+
+
+//# iOS Screenshot Protection Demo
+
+//# Overview
+//This is a demo iOS project created to explore and implement screenshot protection techniques in iOS applications using Swift and UIKit.
+
+//The project focuses purely on testing secure UI approaches and understanding platform limitations.
+
+
+
+//#  Features
+
+//-  Screenshot protection using secure text field layering
+//-  Experimental setup for testing iOS security behavior
+//-  Lightweight and focused implementation
+//-  UIKit-based UI
+
+
+//# Tech Stack
+
+//- Swift
+//- UIKit
+//- Xcode
+
+
+//# What This Project Demonstrates
+
+//- How to obscure sensitive UI content during screenshots
+//- How iOS handles secure rendering layers
+//- Practical implementation of screenshot protection techniques
+
+
+//# Important Note
+
+//iOS does not provide an official API to completely block screenshots.
+//This project demonstrates **workarounds** and **best-effort protection techniques**, not guaranteed prevention.
+
