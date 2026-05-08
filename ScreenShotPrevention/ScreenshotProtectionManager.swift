@@ -1,6 +1,5 @@
 //
-//  ScreenshotProtectedView.swift
-//  ScreenShotPrevention
+//  ScreenshotProtectionManager.swift
 //
 //  Created by Sainath Tuptewar on 06/05/26.
 //
