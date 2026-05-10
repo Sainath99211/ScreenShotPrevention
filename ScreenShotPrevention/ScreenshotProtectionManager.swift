@@ -8,71 +8,56 @@ import UIKit
 
 final class ScreenshotProtectionManager {
 
-    @MainActor static let shared = ScreenshotProtectionManager()
+    static let shared = ScreenshotProtectionManager()
     private init() {}
 
-    private weak var protectedWindow: UIWindow?
+    private weak var window: UIWindow?
     private var secureTextField: UITextField?
-    private var securedOverlay: UIView?
-    var isEnabled = false
+    private var originalSuperlayer: CALayer?
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var isEnabled = false
 
     func enableProtection(for window: UIWindow) {
 
-        // guard let secureTextField else { return }
         guard !isEnabled else { return }
         isEnabled = true
 
+        self.window = window
+
         let field = UITextField()
-        // Keep isSecureTextEntry to true (disables capture/recording of content)
         field.isSecureTextEntry = true
+        field.isUserInteractionEnabled = false
 
-        // Create protection view
-        let protectionView = UIView(
-            frame: CGRect(
-                x: 0,
-                y: 0,
-                width: field.frame.size.width,
-                height: field.frame.size.height
-            )
-        )
-
-        protectionView.backgroundColor = .white
-
-        let label = UILabel(
-            frame: CGRect(
-                x: 0,
-                y: 0,
-                width: UIScreen.main.bounds.width,
-                height: UIScreen.main.bounds.height
-            )
-        )
-
-        label.text = "Content Hidden for Security"
-        label.textAlignment = .center
-        label.font = .systemFont(ofSize: 18, weight: .bold)
-        label.textColor = .gray
-
-        protectionView.addSubview(label)
-
-        // Required to position the text correctly
-        field.leftView = protectionView
-        field.leftViewMode = .always
-
-        // Add field to window
         window.addSubview(field)
 
-        // Store references
-        self.protectedWindow = window
-        self.secureTextField = field
+        // ✅ Save original layer
+        originalSuperlayer = window.layer.superlayer
 
-        // Layer manipulation for screenshot protection
+        // 🔥 Apply hack
         window.layer.superlayer?.addSublayer(field.layer)
         field.layer.sublayers?.last?.addSublayer(window.layer)
 
-        print("Screenshot protection enabled")
+        secureTextField = field
+
+        print("✅ Protection Enabled")
+    }
+
+    func disableProtection() {
+
+        guard isEnabled else { return }
+        isEnabled = false
+
+        guard let window = window else { return }
+
+        // ✅ Restore layer hierarchy
+        if let originalSuperlayer = originalSuperlayer {
+            originalSuperlayer.addSublayer(window.layer)
+        }
+
+        secureTextField?.removeFromSuperview()
+        secureTextField = nil
+        self.window = nil
+
+        print("❌ Protection Disabled")
     }
 }
