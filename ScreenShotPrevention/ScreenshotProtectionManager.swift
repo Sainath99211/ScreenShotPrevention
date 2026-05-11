@@ -27,13 +27,28 @@ final class ScreenshotProtectionManager {
         let field = UITextField()
         field.isSecureTextEntry = true
         field.isUserInteractionEnabled = false
-
+        
+        
+        //Lable to show text on the black view.
+        let protectionView = UIView(frame: CGRect(x: 0, y: 0, width: field.frame.size.width, height: field.frame.size.height))
+        protectionView.backgroundColor = .white
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        label.text = "Content Hidden for Security"
+        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 18,weight: .bold)
+        label.textColor = .gray
+        protectionView.addSubview(label)
+        
+        //Below 2 line required to place the position of text
+        field.leftView = protectionView
+        field.leftViewMode = .always
+        
         window.addSubview(field)
 
         // ✅ Save original layer
         originalSuperlayer = window.layer.superlayer
 
-        // 🔥 Apply hack
+        // Apply hack
         window.layer.superlayer?.addSublayer(field.layer)
         field.layer.sublayers?.last?.addSublayer(window.layer)
 

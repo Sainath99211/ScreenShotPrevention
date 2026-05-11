@@ -26,21 +26,20 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="H0f-W1-KN8">
-                                <rect key="frame" x="46.666666666666657" y="326" width="300" height="200"/>
+                                <rect key="frame" x="46.666666666666657" y="351" width="300" height="150"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="bF7-2v-qWb"/>
+                                    <constraint firstAttribute="height" constant="150" id="bF7-2v-qWb"/>
                                     <constraint firstAttribute="width" constant="300" id="yRe-A7-8KA"/>
                                 </constraints>
-                                <string key="text">Password: DontTellMyMom123
+                                <string key="text">Password: JugaadExpert
 
 Bank Balance: ₹9,99,99,999 (in dreams)
 
 OTP: 123456 (definitely not real 👀)
 
 PIN: 0000 (pls don’t use this 😭)
-
-Crypto Wallet: LostInMarket2026</string>
+</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -146,7 +145,7 @@ Crypto Wallet: LostInMarket2026</string>
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.55294117647058827" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
